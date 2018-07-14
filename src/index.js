@@ -13,9 +13,11 @@ import $ from "jquery";
 const LIMIT = 30;
 const DAYS = 30;
 
+/* Primary functions for assignment */
 const deliveryinfo = new DeliveryInfo(DELIVERIES);
 const top30Customers = deliveryinfo.getTopCustomers(DAYS, LIMIT);
 console.log(top30Customers);
+/* ******************************** */
 
 const $customerListElem = $("#customers");
 for(let customer of top30Customers) {
