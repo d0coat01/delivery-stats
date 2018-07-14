@@ -14,7 +14,7 @@ export class DeliveryInfo {
       this.filtered_deliveries = this.filterDeliveries(this.deliveries, days_past);
     }
     //count customers
-    const customers = {};
+    let customers = {};
     for(let delivery of this.filtered_deliveries) {
       if(typeof customers[delivery.customer.id] === "undefined") {
         customers[delivery.customer.id] = {
@@ -24,7 +24,12 @@ export class DeliveryInfo {
       }
       else customers[delivery.customer.id].count++;
     }
-    console.log(customers);
+    const sorted_customers = [];
+    for(let id of Object.keys(customers)){
+      sorted_customers.push(customers[id]);
+    }
+    sorted_customers.sort((a,b)=>b.count-a.count);
+    return sorted_customers.slice(0, customer_limit);
   }
   filterDeliveries(deliveries, days_past) {
     const cutoff_date = moment().subtract(30, 'days');

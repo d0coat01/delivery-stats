@@ -8,6 +8,7 @@
 */
 import { DELIVERIES } from './deliverydata';
 import { DeliveryInfo } from './statistics';
+import $ from "jquery";
 
 const LIMIT = 30;
 const DAYS = 30;
@@ -15,13 +16,9 @@ const DAYS = 30;
 const deliveryinfo = new DeliveryInfo(DELIVERIES);
 const top30Customers = deliveryinfo.getTopCustomers(DAYS, LIMIT);
 
-console.log(top30Customers);
+const $customerListElem = $("#customers");
+for(let customer of top30Customers) {
+  const $listItem = $("<li>" + customer.name + ", " + customer.count + "</li>");
+  $customerListElem.append($listItem);
+}
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Parcel!</h1>
-<div>
-  Look
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>
-  for more info about Parcel.
-</div>
-`;
