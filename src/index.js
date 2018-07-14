@@ -15,6 +15,7 @@ const DAYS = 30;
 
 const deliveryinfo = new DeliveryInfo(DELIVERIES);
 const top30Customers = deliveryinfo.getTopCustomers(DAYS, LIMIT);
+console.log(top30Customers);
 
 const $customerListElem = $("#customers");
 for(let customer of top30Customers) {

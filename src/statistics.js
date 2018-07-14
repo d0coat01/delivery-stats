@@ -7,7 +7,6 @@ export class DeliveryInfo {
     this.filtered_deliveries = [];
   }
   getTopCustomers(days_past, customer_limit) {
-    console.log(this.deliveries[0], days_past, customer_limit);
     //filter out deliveries older than days_past of days_past has changed from this.days_past
     if(this.days_past !== days_past) {
       this.days_past = days_past;
